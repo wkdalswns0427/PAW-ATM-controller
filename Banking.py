@@ -1,5 +1,4 @@
 import sys, time
-# from users import user_data
 import json
 
 def who_are_you():
@@ -113,7 +112,7 @@ class banking():
         self.account, self.idx = self.select_account()
         print("Hello {user}! your account {account} balance is".format(user=self.user, account=self.account))
         print("${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
-        print("\n\n")
+        print("\n")
     
     # deposit done
     def choose_2(self):
@@ -129,9 +128,9 @@ class banking():
         with open('users.json','w',encoding='utf-8') as f:
             json.dump(self.user_data, f, indent="\t")
         
-        print("\n\n")
+        print("\n")
     
-    # withdraw 
+    # withdraw done
     def choose_3(self):
         self.account, self.idx = self.select_account()
         print("current balance is ${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
@@ -147,7 +146,7 @@ class banking():
             with open('users.json','w',encoding='utf-8') as f:
                 json.dump(self.user_data, f, indent="\t")
         
-        print("\n\n")
+        print("\n")
     
     # change PIN ongoing
     def choose_4(self):
@@ -172,7 +171,7 @@ class banking():
                     print("PIN change cancelled")
         else :
             print("PIN change cancelled")
-        print("\n\n")
+        print("\n")
 
     # return card done
     def choose_5(self):
@@ -187,7 +186,7 @@ class banking():
                 who_are_you()
         else:
             print("Return card cancelled")
-        print("\n\n")
+        print("\n")
 
     def return_to_main(self):
         self.next = input("Do you want to proceed to menu Y/N > ")
@@ -195,4 +194,3 @@ class banking():
             self.menu_page()
         else:
             sys.exit("program exit")
-        
