@@ -21,11 +21,8 @@ def who_are_you():
             "accounts":accounts,
             "balance":balance
         }
-
         user_data[user] = new_user_data
-
     return user
-
 
 class banking():
     def __init__(self, user):
@@ -95,17 +92,20 @@ class banking():
         self.idx = user_data[self.user]["accounts"].index(self.selected)
         return self.selected, self.idx
 
+    # log out done
     def choose_0(self):
         print("Exiting...")
         time.sleep(1)
         sys.exit("You have been logged out")
     
+    # balance check done
     def choose_1(self):
         self.account, self.idx = self.select_account()
         print("Hello {user}! your account {account} balance is".format(user=self.user, account=self.account))
         print("${dollars}".format(dollars=user_data[self.user]["balance"][self.idx]))
         print("\n\n")
-
+    
+    # deposit ongoing
     def choose_2(self):
         self.account, self.idx = self.select_account()
         print("current balance is ${dollars}".format(dollars=user_data[self.user]["balance"][self.idx]))
@@ -115,21 +115,50 @@ class banking():
         
         print("\n\n")
     
+    # withdraw ongoing
     def choose_3(self):
-        self.account = self.select_account()
+        self.account, self.idx = self.select_account()
+        print("current balance is ${dollars}".format(dollars=user_data[self.user]["balance"][self.idx]))
         print("\n\n")
     
+    # change PIN ongoing
     def choose_4(self):
-        self.account = self.select_account()
+        ans=input("Do you really want to change PIN? Y/N > ")
+        if ans == "Y" or ans=="y":
+            oldpin = user_data[self.user]["PIN"]
+            newPIN=input("Type in New PIN > ")
+            confirm = input("confirm New PIN > ")
+            if newPIN == confirm:
+                user_data[self.user]["PIN"] = int(newPIN)
+                print("PIN changed from {old} to {new}".format(old=oldpin, new=newPIN))
+            else :
+                confirm = input("reconfirm New PIN > ")
+                if newPIN == confirm:
+                    user_data[self.user]["PIN"] = int(newPIN)
+                else:
+                    print("PIN change cancelled")
+        else :
+            print("PIN change cancelled")
         print("\n\n")
 
+    # return card ongoing
     def choose_5(self):
-        self.account = self.select_account()
+        ans=input("Do you really want to return card? Y/N > ")
+        if ans=="Y" or ans=="y":
+            print("returning card...")
+            time.sleep(1)
+            an=input("Will you continue with other card? Y/N > ")
+            if an=="N" or an=="n":
+                sys.exit("program exit")
+            elif an=="Y" or an=="y":
+                who_are_you()
+        else:
+            print("Return card cancelled")
         print("\n\n")
 
     def return_to_main(self):
-        self.next = int(input("Enter 0 if you want to exit 1 if you want to proceed to menu"))
-        if self.next==1:
+        self.next = input("Do you want to proceed to menu Y/N > ")
+        if self.next=="Y" or self.next=="y":
             self.menu_page()
         else:
             sys.exit("program exit")
