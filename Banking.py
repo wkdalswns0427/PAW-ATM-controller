@@ -36,7 +36,7 @@ class banking():
     def verify_user(self):
         if self.PIN != user_data[self.user]["PIN"]:
             self.cnt = 0
-            while self.cnt < 4:
+            while self.cnt < 3:
                 self.PIN = int(input("retry PIN :"))
                 if self.PIN == user_data[self.user]["PIN"]:
                     break
@@ -52,30 +52,48 @@ class banking():
             print("user verified")
             return True
     
-    # def log_in(self):
-    #     if self.verify_user():
-    #         return True
+    def log_in(self):
+        if self.verify_user():
+            return True
+        else:
+            sys.exit("Killing Program")
     
     def menu_page(self):
-        if self.verify_user():
-            print("\t0. Logout and Exit")
-            print("\t1. View Account Balance")
-            print("\t2. Withdraw Cash")
-            print("\t3. Deposit Cash")
-            print("\t4. Change PIN")
-            print("\t5. Return Card")
-            self.choice = int(input("Enter number to proceed > "))
-            print("\n\n")
-        else:
-            sys.exit("Why is this still running? Killing...")
+        print("\t0. Logout and Exit")
+        print("\t1. View Account Balance")
+        print("\t2. Withdraw Cash")
+        print("\t3. Deposit Cash")
+        print("\t4. Change PIN")
+        print("\t5. Return Card")
+        self.choice = int(input("Enter number to proceed > "))
+        self.proceed_to_next()
     
+    def proceed_to_next(self):
+        if self.choice == 0:
+            self.choose_0()
+        elif self.choice == 1:
+            self.choose_1()
+            self.return_to_main()
+        elif self.choice == 2:
+            self.return_to_main()
+            self.choose_2()
+        elif self.choice == 3:
+            self.choose_3()
+            self.return_to_main()
+        elif self.choice == 4:
+            self.choose_4()
+            self.return_to_main()
+        elif self.choice == 5:
+            self.choose_5()
+            self.return_to_main()
+
     def select_account(self):
         self.L = len(user_data[self.user]["accounts"])
-        print()
         for i in range(self.L):
             print("account: ",user_data[self.user]["accounts"][i])
-        self.selected = input("select account : ")
-        return self.selected
+        self.selected = int(input("select account : "))
+        self.idx = user_data[self.user]["accounts"].index(self.selected)
+        return self.selected, self.idx
 
     def choose_0(self):
         print("Exiting...")
@@ -83,16 +101,36 @@ class banking():
         sys.exit("You have been logged out")
     
     def choose_1(self):
+        self.account, self.idx = self.select_account()
+        print("Hello {user}! your account {account} balance is".format(user=self.user, account=self.account))
+        print("${dollars}".format(dollars=user_data[self.user]["balance"][self.idx]))
+        print("\n\n")
+
+    def choose_2(self):
+        self.account, self.idx = self.select_account()
+        print("current balance is ${dollars}".format(dollars=user_data[self.user]["balance"][self.idx]))
+        print("wait for cassette to open...")
+        time.sleep(1)
+        self.input = input("insert cash(type in the amount) : $")
+        
+        print("\n\n")
+    
+    def choose_3(self):
+        self.account = self.select_account()
+        print("\n\n")
+    
+    def choose_4(self):
         self.account = self.select_account()
         print("\n\n")
 
+    def choose_5(self):
+        self.account = self.select_account()
+        print("\n\n")
 
-    
     def return_to_main(self):
-        self.menu_page()
+        self.next = int(input("Enter 0 if you want to exit 1 if you want to proceed to menu"))
+        if self.next==1:
+            self.menu_page()
+        else:
+            sys.exit("program exit")
         
-
-def main():
-    user = who_are_you()
-    bank_use = banking(user)
-    bank_use.menu_page()
