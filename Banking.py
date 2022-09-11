@@ -194,4 +194,3 @@ class banking():
             self.menu_page()
         else:
             sys.exit("program exit")
-        
