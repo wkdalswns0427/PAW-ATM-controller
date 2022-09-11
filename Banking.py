@@ -4,17 +4,17 @@ import json
 def who_are_you():
     with open('users.json') as f:
         user_data = json.load(f)
-    user = input("Insert Card (type your user_code since we don't currently have card reader)")
+    user = input("Insert Card (type your user_code since we don't currently have card reader) > ")
     # if user name is not found in DB update user info
     if user not in user_data:
         print("You are a new user please provide your info")
-        PIN = int(input("PIN:"))
+        PIN = int(input("PIN : "))
         accounts, balance = [], []
-        N = input("How many accounts? :")
+        N = input("How many accounts? : ")
 
         for i in range(int(N)):
-            acc = int(input("enter account id :"))
-            bal = int(input("enter balance :"))
+            acc = int(input("enter account id : "))
+            bal = int(input("enter balance : "))
             accounts.append(acc)
             balance.append(bal)
 
@@ -37,7 +37,7 @@ class banking():
             self.user_data = json.load(f)
         self.user = user
         print("Welcome {user}! Verify with PIN".format(user=self.user))
-        self.PIN = int(input("PIN :"))
+        self.PIN = int(input("PIN : "))
     
     def verify_user(self):
         if self.PIN != self.user_data[self.user]["PIN"]:
@@ -76,20 +76,26 @@ class banking():
     
     def proceed_to_next(self):
         if self.choice == 0:
+            print()
             self.choose_0()
         elif self.choice == 1:
+            print()
             self.choose_1()
             self.return_to_main()
         elif self.choice == 2:
+            print()
             self.choose_2()
             self.return_to_main()
         elif self.choice == 3:
+            print()
             self.choose_3()
             self.return_to_main()
         elif self.choice == 4:
+            print()
             self.choose_4()
             self.return_to_main()
         elif self.choice == 5:
+            print()
             self.choose_5()
             self.return_to_main()
 
@@ -110,13 +116,15 @@ class banking():
     # balance check done
     def choose_1(self):
         self.account, self.idx = self.select_account()
+        print()
         print("Hello {user}! your account {account} balance is".format(user=self.user, account=self.account))
         print("${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
-        print("\n")
+        print()
     
     # deposit done
     def choose_2(self):
         self.account, self.idx = self.select_account()
+        print()
         print("current balance is ${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
         print("wait for cassette to open...") # open cassette
         time.sleep(1)
@@ -128,11 +136,12 @@ class banking():
         with open('users.json','w',encoding='utf-8') as f:
             json.dump(self.user_data, f, indent="\t")
         
-        print("\n")
+        print()
     
     # withdraw done
     def choose_3(self):
         self.account, self.idx = self.select_account()
+        print()
         print("current balance is ${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
         amount = int(input("How much will you withdraw? : "))
         if amount > self.user_data[self.user]["balance"][self.idx]:
@@ -146,7 +155,7 @@ class banking():
             with open('users.json','w',encoding='utf-8') as f:
                 json.dump(self.user_data, f, indent="\t")
         
-        print("\n")
+        print()
     
     # change PIN ongoing
     def choose_4(self):
@@ -171,7 +180,7 @@ class banking():
                     print("PIN change cancelled")
         else :
             print("PIN change cancelled")
-        print("\n")
+        print()
 
     # return card done
     def choose_5(self):
@@ -186,7 +195,7 @@ class banking():
                 who_are_you()
         else:
             print("Return card cancelled")
-        print("\n")
+        print()
 
     def return_to_main(self):
         self.next = input("Do you want to proceed to menu Y/N > ")
