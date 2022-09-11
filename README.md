@@ -10,9 +10,9 @@ clone the repo
 ```
 git clone https://github.com/wkdalswns0427/PAW-ATM-controller.git
 ```
-if you need to manually add user please update in **users.py** in format below
+if you need to manually add user please update in **users.json** in format below
 ```
-"user":{
+"name":{
         "PIN" : int,
         "accounts":[int,int,int],
         "balance":[int,int,int]

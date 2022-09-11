@@ -1,5 +1,5 @@
 import sys, time
-from users import user_data
+import json
 from Banking import who_are_you, banking
 
 def main():
