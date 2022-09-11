@@ -1,5 +1,5 @@
 # ATM controller project
-
+---
 ## Features
 ---
 ```
@@ -10,6 +10,7 @@
         4. Change PIN
         5. Return Card
 ```
+---
 ## Instructions
 ---
 Clone repository
@@ -32,9 +33,42 @@ Run the application
 ```
 python3 main.py
 ```
+you shall log in with or without user data in users.json
+
 ---
-acutal use manual
-- log in with data in DB
+## Actual Use Image
+---
+- **Log in with data in DB**
 
+    ![menuimage](https://user-images.githubusercontent.com/68832065/189533662-9c3324a5-3580-4f20-98de-cc5210fe517f.JPG)
 
+- **Log in with data not in DB**
+
+    ![newuser](https://user-images.githubusercontent.com/68832065/189533669-427f498c-fdfa-4943-959a-e6163710f28b.JPG)
+
+- **Logout and Exit**
+
+    ![img0](https://user-images.githubusercontent.com/68832065/189533685-ec58d5da-b722-4c7a-99aa-49e5d9191763.JPG)
+
+- **View Account Balance**
+
+    ![img1](https://user-images.githubusercontent.com/68832065/189533691-36746548-d298-4e3b-b195-08ed9d22fae4.JPG)
+
+- **eposit Cash**
+
+    ![img2](https://user-images.githubusercontent.com/68832065/189533692-49ff2074-3606-4b63-a04f-8363adfd6770.JPG)
+
+- **Withdraw Cash**
+
+    ![img3](https://user-images.githubusercontent.com/68832065/189533693-c89c5432-8d7c-48e3-8564-78895ea076c8.JPG)
+
+- **Change PIN**
+
+    ![img4](https://user-images.githubusercontent.com/68832065/189533720-5175cc34-612d-47ae-a66e-ac5a66938e5b.JPG)
+
+- **Return Card**
+
+    ![img5](https://user-images.githubusercontent.com/68832065/189533721-fea7e7e0-7a06-458c-b812-403c9cacaf9f.JPG)
+
+---
 final update 2022-09-11 23:00:00 KST
