@@ -1,7 +1,6 @@
 # ATM controller project
 ---
 ## Features
----
 ```
         0. Logout and Exit     
         1. View Account Balance
@@ -12,7 +11,6 @@
 ```
 ---
 ## Instructions
----
 Clone repository
 ```
 git clone https://github.com/wkdalswns0427/PAW-ATM-controller.git
@@ -37,7 +35,6 @@ you shall log in with or without user data in users.json
 
 ---
 ## Actual Use Image
----
 - **Log in with data in DB**
 
     ![menuimage](https://user-images.githubusercontent.com/68832065/189533662-9c3324a5-3580-4f20-98de-cc5210fe517f.JPG)
