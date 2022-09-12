@@ -1,1 +1,4 @@
 # empty yet
+pyfiglet==0.8.post1
+getpass
+json

@@ -1,17 +1,19 @@
 import sys, time
 import json
 import getpass as gp
-# from pyfiglet import Figlet
+from pyfiglet import Figlet
 
-# def init_logo():
-#     f = Figlet(font='slant')
-#     print("-------------------")
-#     print(f.rederText(' PAW BankingSystem '))
-#     print("-------------------")
-#     print(" version 1.0.0")
-#     print("-------------------")
+def init_logo():
+    f = Figlet(font='slant')
+    print("---------------------------------------------------------")
+    print(f.renderText(' * PAW *'))
+    print(f.renderText(' Banking System '))
+    print("---------------------------------------------------------")
+    print(" version 1.0.0")
+    print("---------------------------------------------------------")
     
 def who_are_you():
+    init_logo()
     with open('users.json') as f:
         user_data = json.load(f)
     user = input("Insert Card (type your user_code since we don't currently have card reader) > ")
@@ -208,7 +210,6 @@ class banking():
         print()
 
     def return_to_main(self):
-        # init_logo()
         self.next = input("Do you want to proceed to menu Y/N > ")
         if self.next=="Y" or self.next=="y":
             self.menu_page()
