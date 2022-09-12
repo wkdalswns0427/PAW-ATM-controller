@@ -117,8 +117,8 @@ class banking():
     def choose_1(self):
         self.account, self.idx = self.select_account()
         print()
-        print("Hello {user}! your account {account} balance is".format(user=self.user, account=self.account))
-        print("${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
+        print("Hello {user}! your selected account \"{account}\"".format(user=self.user, account=self.account))
+        print("current balance : ${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
         print()
     
     # deposit done
@@ -130,7 +130,7 @@ class banking():
         time.sleep(1)
         amount = int(input("insert cash(type in the amount) : $"))
         new_balance = self.user_data[self.user]["balance"][self.idx] + amount
-        print("input : {input} , current balance : {new}".format(input=amount, new=new_balance))
+        print("input : ${input} , current balance : ${new}".format(input=amount, new=new_balance))
         self.user_data[self.user]["balance"][self.idx] = new_balance
         
         with open('users.json','w',encoding='utf-8') as f:
@@ -143,7 +143,7 @@ class banking():
         self.account, self.idx = self.select_account()
         print()
         print("current balance is ${dollars}".format(dollars=self.user_data[self.user]["balance"][self.idx]))
-        amount = int(input("How much will you withdraw? : "))
+        amount = int(input("How much will you withdraw? : $"))
         if amount > self.user_data[self.user]["balance"][self.idx]:
             print("That exceeds your balance! retry")
             print()
@@ -151,7 +151,7 @@ class banking():
         else:
             new_balance = self.user_data[self.user]["balance"][self.idx] - amount
             self.user_data[self.user]["balance"][self.idx] = new_balance
-            print("withdrawal : {input} , current balance : {new}".format(input=amount, new=new_balance))
+            print("withdrawal : ${input} , current balance : ${new}".format(input=amount, new=new_balance))
             with open('users.json','w',encoding='utf-8') as f:
                 json.dump(self.user_data, f, indent="\t")
         
