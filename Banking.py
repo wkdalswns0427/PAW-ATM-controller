@@ -1,6 +1,16 @@
 import sys, time
 import json
+import getpass as gp
+# from pyfiglet import Figlet
 
+# def init_logo():
+#     f = Figlet(font='slant')
+#     print("-------------------")
+#     print(f.rederText(' PAW BankingSystem '))
+#     print("-------------------")
+#     print(" version 1.0.0")
+#     print("-------------------")
+    
 def who_are_you():
     with open('users.json') as f:
         user_data = json.load(f)
@@ -37,13 +47,13 @@ class banking():
             self.user_data = json.load(f)
         self.user = user
         print("Welcome {user}! Verify with PIN".format(user=self.user))
-        self.PIN = int(input("PIN : "))
+        self.PIN = int(gp.getpass("PIN : "))
     
     def verify_user(self):
         if self.PIN != self.user_data[self.user]["PIN"]:
             self.cnt = 0
             while self.cnt < 3:
-                self.PIN = int(input("retry PIN :"))
+                self.PIN = int(gp.getpass("retry PIN :"))
                 if self.PIN == self.user_data[self.user]["PIN"]:
                     break
                 self.cnt+=1
@@ -157,20 +167,20 @@ class banking():
         
         print()
     
-    # change PIN ongoing
+    # change PIN done
     def choose_4(self):
         ans=input("Do you really want to change PIN? Y/N > ")
         if ans == "Y" or ans=="y":
             oldpin = self.user_data[self.user]["PIN"]
-            newPIN=input("Type in New PIN > ")
-            confirm = input("confirm New PIN > ")
+            newPIN=gp.getpass("Type in New PIN > ")
+            confirm = gp.getpass("confirm New PIN > ")
             if newPIN == confirm:
                 self.user_data[self.user]["PIN"] = int(newPIN)
                 with open('users.json','w',encoding='utf-8') as f:
                     json.dump(self.user_data, f, indent="\t")
                 print("PIN changed from {old} to {new}".format(old=oldpin, new=newPIN))
             else :
-                confirm = input("reconfirm New PIN > ")
+                confirm = gp.getpass("reconfirm New PIN > ")
                 if newPIN == confirm:
                     self.user_data[self.user]["PIN"] = int(newPIN)
                     with open('users.json','w',encoding='utf-8') as f:
@@ -198,6 +208,7 @@ class banking():
         print()
 
     def return_to_main(self):
+        # init_logo()
         self.next = input("Do you want to proceed to menu Y/N > ")
         if self.next=="Y" or self.next=="y":
             self.menu_page()
