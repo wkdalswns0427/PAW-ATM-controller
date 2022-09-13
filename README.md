@@ -1,5 +1,7 @@
 # ATM controller project : Paw Banking System
 
+Maintaniner : MinjunChang
+
 ```
 ---------------------------------------------------------
                ____  ___ _       __       
@@ -96,4 +98,4 @@ you shall log in with or without user data in users.json
     ![img5](https://user-images.githubusercontent.com/68832065/189533721-fea7e7e0-7a06-458c-b812-403c9cacaf9f.JPG)
 
 ---
-final update 2022-09-11 23:00:00 KST
+final update 2022-09-13 14:13:00 KST
