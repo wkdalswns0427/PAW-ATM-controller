@@ -45,6 +45,7 @@ git clone https://github.com/wkdalswns0427/PAW-ATM-controller.git
 Install all required packages
 ```
 pip3 install -r requirements.txt
+pip3 install pyfiglet
 ```
 If you need to manually add user, please update in **users.json** in format below
 ```
